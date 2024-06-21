@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .selectDiv {
+        width: 200px;
+
+        }
+        .selectBox {
+        position: relative;
+        }
+        .overSelect {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        }
+        .selectBox select {
+            content: "hello";
+        width: 100%;
+        font-weight: 500;
+        }
+        #checkboxes {
+        display: none;
+        /* border: 1px #dadada solid; */
+        }
+        #checkboxes ul {
+        display: block;
+        padding-left: 15px;
+        }
+
+        #checkboxes ul li:hover {
+        background-color: #1e90ff;
+        color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <form>
+        <div class="selectDiv">
+          <div class="selectBox" id="selectBox" onclick="showCheckboxes()">
+            <select>
+              <option>Select an option</option>
+            </select>
+            <div class="overSelect"></div>
+          </div>
+          <div id="checkboxes">
+            <ul style="list-style: none;">
+                <li><input type="checkbox" id="Checkbox1" onClick="checkBox1(1)"> Main Checkbox 1<br></li>
+                <ul style="list-style: none;">
+                    <li><input type="checkbox" class="Checkbox1"> Child Checkbox 1<br></li>
+                    <li><input type="checkbox" class="Checkbox1"> Child Checkbox 2<br></li>
+                    <li><input type="checkbox" class="Checkbox1"> Child Checkbox 3<br></li>
+                </ul>
+            </ul>
+            <ul style="list-style: none;">
+                <li><input type="checkbox" id="Checkbox2" onClick="checkBox1(2)"> Main Checkbox 2<br></li>
+                <ul style="list-style: none;">
+                    <li><input type="checkbox" class="Checkbox2"> Child Checkbox 1<br></li>
+                    <li><input type="checkbox" class="Checkbox2"> Child Checkbox 2<br></li>
+                    <li><input type="checkbox" class="Checkbox2"> Child Checkbox 3<br></li>
+                </ul>
+            </ul>
+            <ul style="list-style: none;">
+                <li><input type="checkbox" id="Checkbox3" onClick="checkBox1(3)"> Main Checkbox 3<br></li>
+                <ul style="list-style: none;">
+                    <li><input type="checkbox" class="Checkbox3"> Child Checkbox 1<br></li>
+                    <li><input type="checkbox" class="Checkbox3"> Child Checkbox 2<br></li>
+                    <li><input type="checkbox" class="Checkbox3"> Child Checkbox 3<br></li>
+                </ul>
+            </ul>
+          </div>
+        </div>
+      </form>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        //show select option
+
+        var expanded = false;
+        function showCheckboxes() {
+        var checkboxes = document.getElementById("checkboxes");
+        if (!expanded) {
+            checkboxes.style.display = "block";
+            expanded = true;
+        } else {
+            checkboxes.style.display = "none";
+            expanded = false;
+        }
+        }
+
+        // Select option
+        function checkBox1(id){
+            $("#Checkbox"+id).change(function() {
+            $(".Checkbox"+id).prop('checked', $(this).prop('checked'));
+        });
+        }
+    </script>
+
+    <script>
+        
+    </script>
+</body>
+</html>
